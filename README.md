@@ -1,4 +1,4 @@
-###Code for the paper : Navigation task and action space drive the emergence of egocentric and allocentric spatial representations
+### Code for the paper : Navigation task and action space drive the emergence of egocentric and allocentric spatial representations
 
 Using model-free reinforcement learning to study spatial navigation in an artificial agent using different tasks (Currently - guidance and aiming). 
 The network representations are then analysed in order to understand what types of spatial representations are used, and the factors that shape these representations. 

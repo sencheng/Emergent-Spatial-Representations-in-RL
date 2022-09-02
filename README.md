@@ -17,7 +17,7 @@ ______
 
 In order to test the code, please follow the following steps : 
 
-- Clone the CoBeL-RL framework on to your system (https://gitlab.ruhr-uni-bochum.de/cns/1-frameworks/CoBeL-RL)
+- Clone the CoBeL-RL framework on to your system
 - Follow the instructions to set up CoBeL-RL, including the libraries and software requirements, and check that CoBeL-RL demo runs without issues.
 - Clone or download the repository for this project to your system.
 - Add the directory for the repository to your PYTHONPATH variable. One way to do this is to add `export PYTHONPATH="${PYTHONPATH}:/path/to/emergent_spatial_representations/"` to your .bashrc profile

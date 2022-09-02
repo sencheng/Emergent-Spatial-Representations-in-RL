@@ -1,0 +1,413 @@
+{
+    "class_name": "Functional",
+    "config": {
+        "name": "model",
+        "layers": [
+            {
+                "class_name": "InputLayer",
+                "config": {
+                    "batch_input_shape": [
+                        null,
+                        1,
+                        12,
+                        48,
+                        3
+                    ],
+                    "dtype": "float32",
+                    "sparse": false,
+                    "ragged": false,
+                    "name": "image_input"
+                },
+                "name": "image_input",
+                "inbound_nodes": []
+            },
+            {
+                "class_name": "Reshape",
+                "config": {
+                    "name": "reshape_1",
+                    "trainable": true,
+                    "batch_input_shape": [
+                        null,
+                        1,
+                        12,
+                        48,
+                        3
+                    ],
+                    "dtype": "float32",
+                    "target_shape": [
+                        12,
+                        48,
+                        3
+                    ]
+                },
+                "name": "reshape_1",
+                "inbound_nodes": [
+                    [
+                        [
+                            "image_input",
+                            0,
+                            0,
+                            {}
+                        ]
+                    ]
+                ]
+            },
+            {
+                "class_name": "Conv2D",
+                "config": {
+                    "name": "cnn_1",
+                    "trainable": true,
+                    "dtype": "float32",
+                    "filters": 32,
+                    "kernel_size": [
+                        5,
+                        5
+                    ],
+                    "strides": [
+                        1,
+                        1
+                    ],
+                    "padding": "valid",
+                    "data_format": "channels_last",
+                    "dilation_rate": [
+                        1,
+                        1
+                    ],
+                    "groups": 1,
+                    "activation": "relu",
+                    "use_bias": true,
+                    "kernel_initializer": {
+                        "class_name": "GlorotUniform",
+                        "config": {
+                            "seed": null
+                        }
+                    },
+                    "bias_initializer": {
+                        "class_name": "Zeros",
+                        "config": {}
+                    },
+                    "kernel_regularizer": null,
+                    "bias_regularizer": null,
+                    "activity_regularizer": null,
+                    "kernel_constraint": null,
+                    "bias_constraint": null
+                },
+                "name": "cnn_1",
+                "inbound_nodes": [
+                    [
+                        [
+                            "reshape_1",
+                            0,
+                            0,
+                            {}
+                        ]
+                    ]
+                ]
+            },
+            {
+                "class_name": "Conv2D",
+                "config": {
+                    "name": "cnn_2",
+                    "trainable": true,
+                    "dtype": "float32",
+                    "filters": 64,
+                    "kernel_size": [
+                        4,
+                        4
+                    ],
+                    "strides": [
+                        2,
+                        2
+                    ],
+                    "padding": "valid",
+                    "data_format": "channels_last",
+                    "dilation_rate": [
+                        1,
+                        1
+                    ],
+                    "groups": 1,
+                    "activation": "relu",
+                    "use_bias": true,
+                    "kernel_initializer": {
+                        "class_name": "GlorotUniform",
+                        "config": {
+                            "seed": null
+                        }
+                    },
+                    "bias_initializer": {
+                        "class_name": "Zeros",
+                        "config": {}
+                    },
+                    "kernel_regularizer": null,
+                    "bias_regularizer": null,
+                    "activity_regularizer": null,
+                    "kernel_constraint": null,
+                    "bias_constraint": null
+                },
+                "name": "cnn_2",
+                "inbound_nodes": [
+                    [
+                        [
+                            "cnn_1",
+                            0,
+                            0,
+                            {}
+                        ]
+                    ]
+                ]
+            },
+            {
+                "class_name": "Conv2D",
+                "config": {
+                    "name": "cnn_3",
+                    "trainable": true,
+                    "dtype": "float32",
+                    "filters": 64,
+                    "kernel_size": [
+                        3,
+                        3
+                    ],
+                    "strides": [
+                        2,
+                        2
+                    ],
+                    "padding": "valid",
+                    "data_format": "channels_last",
+                    "dilation_rate": [
+                        1,
+                        1
+                    ],
+                    "groups": 1,
+                    "activation": "relu",
+                    "use_bias": true,
+                    "kernel_initializer": {
+                        "class_name": "GlorotUniform",
+                        "config": {
+                            "seed": null
+                        }
+                    },
+                    "bias_initializer": {
+                        "class_name": "Zeros",
+                        "config": {}
+                    },
+                    "kernel_regularizer": null,
+                    "bias_regularizer": null,
+                    "activity_regularizer": null,
+                    "kernel_constraint": null,
+                    "bias_constraint": null
+                },
+                "name": "cnn_3",
+                "inbound_nodes": [
+                    [
+                        [
+                            "cnn_2",
+                            0,
+                            0,
+                            {}
+                        ]
+                    ]
+                ]
+            },
+            {
+                "class_name": "InputLayer",
+                "config": {
+                    "batch_input_shape": [
+                        null,
+                        1,
+                        50
+                    ],
+                    "dtype": "float32",
+                    "sparse": false,
+                    "ragged": false,
+                    "name": "noise_input"
+                },
+                "name": "noise_input",
+                "inbound_nodes": []
+            },
+            {
+                "class_name": "Flatten",
+                "config": {
+                    "name": "flatten",
+                    "trainable": true,
+                    "dtype": "float32",
+                    "data_format": "channels_last"
+                },
+                "name": "flatten",
+                "inbound_nodes": [
+                    [
+                        [
+                            "cnn_3",
+                            0,
+                            0,
+                            {}
+                        ]
+                    ]
+                ]
+            },
+            {
+                "class_name": "Reshape",
+                "config": {
+                    "name": "reshape_3",
+                    "trainable": true,
+                    "dtype": "float32",
+                    "target_shape": [
+                        50
+                    ]
+                },
+                "name": "reshape_3",
+                "inbound_nodes": [
+                    [
+                        [
+                            "noise_input",
+                            0,
+                            0,
+                            {}
+                        ]
+                    ]
+                ]
+            },
+            {
+                "class_name": "Dense",
+                "config": {
+                    "name": "dense",
+                    "trainable": true,
+                    "dtype": "float32",
+                    "units": 50,
+                    "activation": "relu",
+                    "use_bias": true,
+                    "kernel_initializer": {
+                        "class_name": "GlorotUniform",
+                        "config": {
+                            "seed": null
+                        }
+                    },
+                    "bias_initializer": {
+                        "class_name": "Zeros",
+                        "config": {}
+                    },
+                    "kernel_regularizer": null,
+                    "bias_regularizer": null,
+                    "activity_regularizer": null,
+                    "kernel_constraint": null,
+                    "bias_constraint": null
+                },
+                "name": "dense",
+                "inbound_nodes": [
+                    [
+                        [
+                            "flatten",
+                            0,
+                            0,
+                            {}
+                        ]
+                    ]
+                ]
+            },
+            {
+                "class_name": "Add",
+                "config": {
+                    "name": "add",
+                    "trainable": true,
+                    "dtype": "float32"
+                },
+                "name": "add",
+                "inbound_nodes": [
+                    [
+                        [
+                            "reshape_3",
+                            0,
+                            0,
+                            {}
+                        ],
+                        [
+                            "dense",
+                            0,
+                            0,
+                            {}
+                        ]
+                    ]
+                ]
+            },
+            {
+                "class_name": "Dropout",
+                "config": {
+                    "name": "dropout",
+                    "trainable": true,
+                    "dtype": "float32",
+                    "rate": 0.35,
+                    "noise_shape": null,
+                    "seed": null
+                },
+                "name": "dropout",
+                "inbound_nodes": [
+                    [
+                        [
+                            "add",
+                            0,
+                            0,
+                            {}
+                        ]
+                    ]
+                ]
+            },
+            {
+                "class_name": "Dense",
+                "config": {
+                    "name": "dense_1",
+                    "trainable": true,
+                    "dtype": "float32",
+                    "units": 12,
+                    "activation": "linear",
+                    "use_bias": true,
+                    "kernel_initializer": {
+                        "class_name": "GlorotUniform",
+                        "config": {
+                            "seed": null
+                        }
+                    },
+                    "bias_initializer": {
+                        "class_name": "Zeros",
+                        "config": {}
+                    },
+                    "kernel_regularizer": null,
+                    "bias_regularizer": null,
+                    "activity_regularizer": null,
+                    "kernel_constraint": null,
+                    "bias_constraint": null
+                },
+                "name": "dense_1",
+                "inbound_nodes": [
+                    [
+                        [
+                            "dropout",
+                            0,
+                            0,
+                            {}
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "input_layers": [
+            [
+                "image_input",
+                0,
+                0
+            ],
+            [
+                "noise_input",
+                0,
+                0
+            ]
+        ],
+        "output_layers": [
+            [
+                "dense_1",
+                0,
+                0
+            ]
+        ]
+    },
+    "keras_version": "2.9.0",
+    "backend": "tensorflow"
+}

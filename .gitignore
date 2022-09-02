@@ -1,0 +1,15 @@
+*.h5f
+*.npy
+*.png
+*.sh
+*.blend
+*.blend1
+*.bmp
+*.json
+*.pyc
+temp/
+!metadata.json
+!aiming.blend
+!guidance.blend
+!networks/*.json
+data
